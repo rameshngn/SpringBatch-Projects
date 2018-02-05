@@ -14,20 +14,11 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 @Configuration
 public class H2Configuration {
 
-  /*@Bean
+  @Bean
   public EmbeddedDatabase h2DataSource(){
-    return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
-  }*/
-
-  /*@Bean
-  public DataSource h2DataSource(){
-    DriverManagerDataSource dataSource = new DriverManagerDataSource();
-    dataSource.setDriverClassName("org.h2.Driver");
-    dataSource.setUrl("jdbc:h2:mem:db;DB_CLOSE_DELAY=-1");
-    dataSource.setUsername("sa");
-    dataSource.setPassword("sa");
-
-    return dataSource;
-    //return DataSourceBuilder.create().build();
-  }*/
+    return new EmbeddedDatabaseBuilder()
+        .setType(EmbeddedDatabaseType.H2)
+        .addScript("Application_Schema.sql")
+        .addScript("Application_SQL.sql").build();
+  }
 }
